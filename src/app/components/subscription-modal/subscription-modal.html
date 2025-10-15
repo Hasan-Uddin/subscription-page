@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h5 class="modal-title">New Subscription Order</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+
+<div class="modal-body text-center">
+  <h6>{{ plan.name }}</h6>
+  <p>Price: {{ plan.price }} TK</p>
+  <p>Validity: {{ plan.validityDays }} days</p>
+  <p>Free SMS: {{ plan.sms }}</p>
+  <button class="btn btn-success" (click)="confirmPurchase()">Buy</button>
+</div>
+

@@ -97,3 +97,7 @@
 .form-check-input[type="radio"]:hover {
   border-color: #495057;
 }
+
+.btn-hover:hover {
+  transform: scale(1.005);
+}

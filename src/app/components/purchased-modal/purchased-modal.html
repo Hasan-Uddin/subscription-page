@@ -1,0 +1,18 @@
+<div class="modal-header modal-lg w-100">
+  <h5 class="modal-title">Subscription Activated Successfully</h5>
+</div>
+<div class="modal-body modal-lg  w-100">
+  <p class="alert alert-success">You've successfully purchased the {{ planName }} plan.</p>
+  <ul>
+    <li><strong>Total Paid:</strong> {{ totalPrice | number:'1.0-0' }} TK</li>
+    <li><strong>Validity:</strong> 30 Days (Expires on {{ expiryDate }})</li>
+    <li><strong>Free SMS:</strong> {{ freeSms }}</li>
+    <li><strong>Extra SMS Added:</strong> {{ additionalSms }}</li>
+  </ul>
+  <p>Your new subscription is now active. Enjoy uninterrupted access to DappleSoft eShop!</p>
+</div>
+<div class="modal-footer justify-content-center">
+  <button type="button" class="btn modal-active-btn me-2 btn-hover" (click)="close()">Goto Dashboard</button>
+  <button type="button" class="btn btn-outline-secondary btn-hover" (click)="close()">View My Subscription</button>
+</div>
+

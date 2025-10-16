@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { SubscriptionPlan, SubscriptionHistory } from '../models/subscription.model';
+import { SubscriptionPlan } from '../models/subscription.plan.model';
+import { SubscriptionHistory } from '../models/Subscription.history.model';
 
 //--you can change and add plans here---
 @Injectable({ providedIn: 'root' })
@@ -12,7 +13,7 @@ export class SubscriptionService {
       price: 100,
       validityDays: 15,
       features: ['Unlimited ID', 'SMS: OFF'],
-      sms: 0,
+      freeSMS: 0,
       duration: '10 Days',
       smsIncluded: false,
       highlighted: false,
@@ -24,7 +25,7 @@ export class SubscriptionService {
       price: 500,
       validityDays: 30,
       features: ['Unlimited ID', 'Free SMS: 415'],
-      sms: 415,
+      freeSMS: 415,
       duration: '30 Days',
       smsIncluded: true,
       highlighted: true,
@@ -37,7 +38,7 @@ export class SubscriptionService {
       validityDays: 30,
       features: ['Unlimited ID', 'Free SMS: 850'],
       duration: '30 Days',
-      sms: 850,
+      freeSMS: 850,
       smsIncluded: true,
       highlighted: false,
       description: 'Premium Solution for Enterprise.',
@@ -48,7 +49,7 @@ export class SubscriptionService {
       price: 5000,
       validityDays: 365,
       features: ['Unlimited ID', 'Free SMS: 5000'],
-      sms: 5000,
+      freeSMS: 5000,
       duration: '1 Year',
       smsIncluded: true,
       highlighted: false,

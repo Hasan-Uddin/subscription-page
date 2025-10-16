@@ -9,7 +9,7 @@
     <h6 class="mb-2">{{ plan.name }}</h6>
     <p class="mb-1">Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ plan.price }} BDT</p>
     <p class="mb-1">Duration&nbsp; : {{ plan.validityDays }} Days</p>
-    <p class="mb-0">Free SMS : {{ plan.sms }}</p>
+    <p class="mb-0">Free SMS : {{ plan.freeSMS }}</p>
   </div>
 
 
@@ -39,15 +39,14 @@
             <label class="col-form-label">Price:</label>
           </div>
           <div class="col-auto">
-            <div
-             class="bg-light" >&nbsp;{{smsUnitPrice}}&nbsp;</div>
+            <div class="bg-light" >&nbsp;{{smsUnitPrice}}&nbsp;</div>
           </div>
           <div class="col-auto">
             <span class="fw-semibold">x</span>
           </div>
           <div class="col-6">
             <input class="form-control form-control-sm" type="number" placeholder="SMS Quantity"
-              [(ngModel)]="smsQuantity" (input)="calculateTotal()" min="0" />
+              [(ngModel)]="additionalSMS" (input)="calculateTotal()" min="0" />
           </div>
           <div class="col-auto">
             <span>= {{ additionalSmsCost.toFixed(0) }} TK</span>
@@ -63,7 +62,7 @@
 
       <!-- Buttons -->
       <div class="text-center">
-        <button class="btn modal-active-btn me-2 w-100 my-2" (click)="confirmPurchase()">Buy</button>
+        <button class="btn modal-active-btn me-2 w-100 my-2 btn-hover" (click)="confirmPurchase()">Buy</button>
         <button class="btn btn-outline-secondary w-100" (click)="close()">Cancel</button>
       </div>
     </div>

@@ -1,1 +1,99 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --brand-blue: #37358b;
+    --brand-blue-dark: #121e6e;
+    --modal-head-bg: #1b2653;
+    --modal-active-btn: #405582;
+    --brand-pink: #fdf2f8;
+    --brand-blue: #3b82f6;
+    --brand-green: #059669;
+    --brand-red: #dc2626;
+    --white: #ffffff;
+}
+
+.bg-brand-purple {
+    background-color: var(--brand-blue) !important;
+}
+
+.modal-active-btn {
+    background-color: var(--modal-active-btn) !important;
+    color: var(--white) !important;
+}
+
+.text-brand-blue {
+    color: var(--brand-blue-dark) !important;
+}
+
+.bg-modal-head {
+    background-color: var(--modal-head-bg) !important;
+}
+
+.btn-blue-dark {
+    background-color: var(--brand-blue-dark) !important;
+    color: var(--white) !important;
+}
+
+.btn-blue-dark:hover {
+    background-color: rgba(255, 255, 255, 0.26);
+}
+
+
+
+.card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.274);
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(41, 74, 112, 0.178);
+
+}
+
+.card-hover:hover .btn-blue-dark {
+    background-color: var(--white) !important;
+    color: var(--brand-blue-dark) !important;
+}
+
+.border-clr {
+  border: 1px solid;
+  border-color: var(--brand-blue-dark);
+}
+
+
+/* Custom radio button style */
+.form-check-input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 1.125em;  /* 18px based on the font size */
+    height: 1.125em;
+    border-radius: 50%;
+    border: 1px solid #6c757d; /* Gray border for the unselected state */
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for changes */
+}
+
+.form-check-input[type="radio"]:checked {
+    background-color: #fdfdfd;
+    /* Dark color for the selected state */
+    border-color: #343a40;
+    border-width: 2px;
+    /* Same color as background when selected */
+}
+.form-check-input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #343a40; /* Dark color for the selected dot */
+}
+
+
+
+/* On hover, show a subtle border color change */
+.form-check-input[type="radio"]:hover {
+  border-color: #495057;
+}

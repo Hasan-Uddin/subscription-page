@@ -1,73 +1,104 @@
-<div class="container mt-4">
-  <div class="card p-4 mb-2">
-    <h4>Subscriptions</h4>
-  </div>
+<div class="container mt-2 ">
 
-<div class="d-flex justify-content-end align-items-start gap-2  mb-3">
-  <div class="fs-4  align-self-center">Balance</div>
-  <div class="card p-3" style="width: 18rem;">
-    <div class="text-muted">
-      <i class="bi bi-clock"></i> Validity : 15-07-2025
+
+  <div class="bg-white border rounded-4 mb-4 shadow-sm">
+    <!-- Title Section -->
+    <div class="text-center py-4 border-bottom">
+      <h1 class="h3 h-md-1 fw-bold text-brand-blue">
+        Subscription <span style="color: #059669;"></span>
+      </h1>
     </div>
-    <div class="text-muted">
-      <i class="bi bi-chat-left-text"></i> SMS : 850
-    </div>
-  </div>
-</div>
 
-  
+    <!-- Balance Section -->
+    <div class="p-4" style="background-color: #D1D5E2;">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <h2 class="display-6 fw-bold text-brand-blue">Balance</h2>
 
-  <div class="row">
-  <div class="col-md-3 mb-3" *ngFor="let plan of plans">
-    <div class="card shadow border-0 rounded-4">
-      <div class="card-body text-start d-flex flex-column justify-content-between">
-        <div>
-          <h5>{{ plan.name }}</h5>
-          <p class="text-muted" style="min-height: 4.5rem;">{{ plan.description }}</p>
+        <div class="d-flex flex-column flex-md-row gap-3">
+          <!-- Validity Box -->
+          <div class="d-flex align-items-center gap-2 bg-white px-4 py-2 rounded border shadow-sm">
+            <i class="bi bi-clock-history text-brand-purple"></i>
+            <span class="fw-semibold text-secondary">Validity: 15-07-2025</span>
+          </div>
+
+          <!-- SMS Box -->
+          <div class="d-flex align-items-center gap-2 bg-white px-4 py-2 rounded border shadow-sm">
+            <i class="bi bi-chat-left-text text-brand-purple"></i>
+            <span class="fw-semibold text-secondary">SMS: 850</span>
+          </div>
         </div>
-        <hr>
-        <div>
-          <h2>{{ plan.price }} TK</h2>
-          <ul class="list-unstyled">
-            <li>
-              <i class="bi bi-check text-success"> </i>
-              {{plan.features[0]}}
-            </li>
-            <li>
-              <i [ngClass]="plan.sms > 0 ? 'bi bi-check text-success' : 'bi bi-x text-muted'"></i>
-              {{plan.features[1]}}
-            </li>
-          </ul>
-        </div>
-        <button class="btn btn-primary w-100" (click)="openModal(plan)">BUY &nbsp;&nbsp;<i class="bi bi-arrow-right"></i></button>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Looping through the plans array -->
+      <div class="col-sm-12 col-md-4 col-lg-3 mb-3" *ngFor="let plan of plans">
+        <!-- Card -->
+        <div class="card shadow border-0 rounded-4 card-hover">
+          <div class="card-body text-start d-flex flex-column justify-content-between">
+            <div>
+              <h5>{{ plan.name }}</h5>
+              <p class="text-muted" style="min-height: 4.5rem;">{{ plan.description }}</p>
+            </div>
+            <hr>
+            <div>
+              <h2>{{ plan.price }} TK</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="bi bi-check text-success"></i>
+                  {{ plan.features[0] }}
+                </li>
+                <li>
+                  <i [ngClass]="plan.sms > 0 ? 'bi bi-check text-success' : 'bi bi-x text-danger'"></i>
+                  {{ plan.features[1] }}
+                </li>
+              </ul>
+            </div>
+            <button class="btn btn-blue-dark w-100 fw-semibold fs-6" (click)="openModal(plan)">
+              BUY &nbsp;&nbsp;<i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-  
-  
 
 
 
 
 
-  <h5 class="mt-4">Subscription History</h5>
-  <table class="table table-striped mt-2">
-    <thead>
-      <tr>
-        <th>Plan</th><th>Amount</th><th>Payment Date</th><th>Expiry</th><th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let h of history">
-        <td>{{h.planName}}</td>
-        <td>{{h.amount}}</td>
-        <td>{{h.paymentDate}}</td>
-        <td>{{h.expiryDate}}</td>
-        <td><span [class.text-success]="h.status==='Active'" [class.text-danger]="h.status==='Expired'">{{h.status}}</span></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+  <h5 class="my-3 text-brand-blue">Subscription History</h5>
+  <div class="border-clr my-3">
+
+    <table class="table table-striped mt-2">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Amount</th>
+          <th>Payment Date</th>
+          <th>Expiry</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let h of history">
+          <td>{{h.planName}}</td>
+          <td>{{ h.amount | number:'1.0-0' }}</td>
+          <td>{{h.paymentDate}}</td>
+          <td>{{h.expiryDate}}</td>
+          <td><span [class.text-success.bi.bi-check]="h.status==='Active'"
+              [class.text-danger]="h.status==='Expired'">{{h.status}}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>

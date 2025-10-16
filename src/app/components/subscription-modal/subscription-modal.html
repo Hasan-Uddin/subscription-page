@@ -1,13 +1,71 @@
-<div class="modal-header">
+<div class="modal-header bg-modal-head text-white d-flex justify-content-center">
   <h5 class="modal-title">New Subscription Order</h5>
-  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
 </div>
 
-<div class="modal-body text-center">
-  <h6>{{ plan.name }}</h6>
-  <p>Price: {{ plan.price }} TK</p>
-  <p>Validity: {{ plan.validityDays }} days</p>
-  <p>Free SMS: {{ plan.sms }}</p>
-  <button class="btn btn-success" (click)="confirmPurchase()">Buy</button>
-</div>
+<div class="modal-body justify-content-center ">
+  <!-- Plan Details -->
+  <label class="fw-semibold mb-1">Selected Plan</label>
+  <div class="border p-3 rounded mb-3">
+    <h6 class="mb-2">{{ plan.name }}</h6>
+    <p class="mb-1">Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {{ plan.price }} BDT</p>
+    <p class="mb-1">Duration&nbsp; : {{ plan.validityDays }} Days</p>
+    <p class="mb-0">Free SMS : {{ plan.sms }}</p>
+  </div>
 
+
+  <div class="mb-3 col">
+    <label class="fw-semibold mb-1">SMS Option</label>
+
+    <div class="border p-3 rounded mb-3">
+      <div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="smsOff" name="smsOption" [(ngModel)]="smsOption" value="off"
+            (change)="calculateTotal()" />
+          <label class="form-check-label" for="smsOff">OFF</label>
+        </div>
+
+        <div class="form-check form-check-inline ">
+          <input class="form-check-input" type="radio" id="smsOn" name="smsOption" [(ngModel)]="smsOption" value="on"
+            (change)="calculateTotal()" />
+          <label class="form-check-label" for="smsOn">YES</label>
+        </div>
+      </div>
+
+      <!-- Additional SMS Entry -->
+      <div *ngIf="smsOption === 'on'" class="">
+        <p class="mb-2">Additional SMS</p>
+        <div class="row g-2 align-items-center">
+          <div class="col-auto">
+            <label class="col-form-label">Price:</label>
+          </div>
+          <div class="col-auto">
+            <div
+             class="bg-light" >&nbsp;{{smsUnitPrice}}&nbsp;</div>
+          </div>
+          <div class="col-auto">
+            <span class="fw-semibold">x</span>
+          </div>
+          <div class="col-6">
+            <input class="form-control form-control-sm" type="number" placeholder="SMS Quantity"
+              [(ngModel)]="smsQuantity" (input)="calculateTotal()" min="0" />
+          </div>
+          <div class="col-auto">
+            <span>= {{ additionalSmsCost.toFixed(0) }} TK</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Total -->
+      <div class="text-center my-3 fs-5 fw-bold">
+        Total: {{ totalPrice.toFixed(0) }} Taka
+      </div>
+
+      <!-- Buttons -->
+      <div class="text-center">
+        <button class="btn modal-active-btn me-2 w-100 my-2" (click)="confirmPurchase()">Buy</button>
+        <button class="btn btn-outline-secondary w-100" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
